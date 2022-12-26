@@ -21,7 +21,7 @@ public class Dictionary {
         cacheNonExistingWords = new CacheManager(100, new LFU());
         bloomFilter = new BloomFilter(256, "MD5", "SHA1");
 
-        
+
         // Insert all the words from the files into the Bloom filter
         for (String fileName : fileNames) {
             try {

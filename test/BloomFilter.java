@@ -1,5 +1,9 @@
 package test;
 
+/**
+ * Amit Kaplan 209049972
+ * @version 2.1 - final work
+ */
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.BitSet;

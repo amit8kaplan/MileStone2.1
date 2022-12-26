@@ -12,7 +12,7 @@ public class MainTrain {
 		lru.add("b");
 		lru.add("c");
 		lru.add("a");
-		
+
 		if(!lru.remove().equals("b"))
 			System.out.println("wrong implementation for LRU (-10)");
 	}
@@ -124,9 +124,10 @@ public class MainTrain {
 	}
 
 	public static void main(String[] args) {
-		testLRU();
+//		testLRU();
 		testLFU();
 		System.out.println("done1");
+
 		testCacheManager();
 		System.out.println("done2");
 		testBloomFilter();
