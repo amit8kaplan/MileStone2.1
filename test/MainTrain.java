@@ -1,6 +1,7 @@
 package test;
 
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class MainTrain {
@@ -108,13 +109,19 @@ public class MainTrain {
 			System.out.println("your IOsearch found a word that does not exist (-5)");
 	}
 
-//	public static void testDictionary() {
-//		Dictionary d = new Dictionary("text1.txt","text2.txt");
-//		if(!d.query("is"))
-//			System.out.println("problem with dictionarry in query (-5)");
-//		if(!d.challenge("lazy"))
-//			System.out.println("problem with dictionarry in query (-5)");
-//	}
+	public static void testDictionary()  {
+		Dictionary d = new Dictionary("text1.txt","text2.txt");
+		if(!d.query("is"))
+			System.out.println("problem with dictionarry in query (-5)");
+		else
+			System.out.println("okeyDic");
+		if(!d.query("filter"))
+			System.out.println("problem with dictionarry in query (-5)");
+		if(!d.challenge("lazy"))
+			System.out.println("problem with dictionarry in query (-5)");
+		else
+			System.out.println("okeyDic2");
+	}
 
 	public static void main(String[] args) {
 		testLRU();
@@ -129,7 +136,7 @@ public class MainTrain {
 			System.out.println("you got some exception (-10)");
 		}
 		System.out.println("done3");
-//		testDictionary();
-//		System.out.println("done");
+		testDictionary();
+		System.out.println("done");
 	}
 }
