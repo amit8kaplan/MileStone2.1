@@ -49,11 +49,9 @@ import java.util.Arrays;
 
 public class BookScrabbleHandler implements ClientHandler  {
     private DictionaryManager dictionaryManager;
-
     public BookScrabbleHandler() {
         this.dictionaryManager = DictionaryManager.get();
     }
-
     public void handleClient(InputStream inFromClient, OutputStream outToClient) {
         try (
                 BufferedReader in = new BufferedReader(new InputStreamReader(inFromClient));
@@ -61,25 +59,9 @@ public class BookScrabbleHandler implements ClientHandler  {
         ) {
             String inputLine = in.readLine();
             String[] inputWords = inputLine.split(",");
-//            System.out.println("inputWords");
-//            for (String inputWord : inputWords) {
-//                System.out.println(inputWord);
-//            }
             char queryType = inputWords[0].charAt(0);
-//            System.out.println( "quary type");
-
-//            System.out.println( queryType);
             String[] books = Arrays.copyOfRange(inputWords, 1, inputWords.length );
-//            System.out.println("books");
-//            for (String book : books) {
-//                System.out.println(book);
-//            }
             String word = inputWords[inputWords.length-1 ];
-//            System.out.println("word");
-//            System.out.println(word);
-//            String bookWord = String.join(",", books) +","+ word;
-//            System.out.println("bookWord");
-//            System.out.println(bookWord);
             boolean isExist = false;
             if (queryType == 'Q') {
                 isExist = dictionaryManager.query(books);
@@ -91,13 +73,5 @@ public class BookScrabbleHandler implements ClientHandler  {
             System.out.println("Error handling client: " + e);
         }
     }
-
-
-    public void close() {
-//        try {
-//            clientSocket.close();
-//        } catch (IOException e) {
-//            System.out.println("Error closing client socket: " + e);
-//        }
-    }
+    public void close() {}
 }
