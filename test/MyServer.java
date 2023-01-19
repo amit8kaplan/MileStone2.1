@@ -10,16 +10,21 @@ public class MyServer {
     private int port;
     private ClientHandler clientHandler;
 
+    private volatile boolean stop;
     public MyServer(int port, ClientHandler clientHandler) {
         this.port = port;
         this.clientHandler = clientHandler;
+        this.stop=false;
     }
 
     public void start() {
         try {
             ServerSocket serverSocket = new ServerSocket(port);
-            while (true) {
+            serverSocket.setSoTimeout(1000);
+            while (!stop) {
                 Socket clientSocket = serverSocket.accept();
+
+
                 InputStream inFromClient = clientSocket.getInputStream();
                 OutputStream outToClient = clientSocket.getOutputStream();
                 clientHandler.handleClient(inFromClient, outToClient);
