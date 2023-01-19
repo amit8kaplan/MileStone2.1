@@ -295,16 +295,29 @@ public class MainTrain {
 	public static void testBSCH() {
 		String s1[]=writeFile("s1.txt");
 		String s2[]=writeFile("s2.txt");
-
+//		for (String s : s1) {
+//			System.out.println(s);
+//		}
+//
+//		System.out.println("s2");
+//		for (String s : s2) {
+//			System.out.println(s);
+//		}
 		Random r=new Random();
 		int port=6000+r.nextInt(1000);
 		MyServer s=new MyServer(port, new BookScrabbleHandler());
 		s.start();
+		System.out.println(1);
 		runClient(port, "Q,s1.txt,s2.txt,"+s1[1], true);
+		System.out.println(2);
 		runClient(port, "Q,s1.txt,s2.txt,"+s2[4], true);
+		System.out.println(3);
 		runClient(port, "Q,s1.txt,s2.txt,2"+s1[1], false);
+		System.out.println(4);
 		runClient(port, "Q,s1.txt,s2.txt,3"+s2[4], false);
+		System.out.println(5);
 		runClient(port, "C,s1.txt,s2.txt,"+s1[9], true);
+		System.out.println(6);
 		runClient(port, "C,s1.txt,s2.txt,#"+s2[1], false);
 		s.close();
 	}
@@ -312,7 +325,10 @@ public class MainTrain {
 	public static void main(String[] args) {
 		if(testServer()) {
 			testDM();
-			testBSCH();
+     		testBSCH();
+
+//			System.out.println(testServer());
+
 		}
 		System.out.println("done");
 	}

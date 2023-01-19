@@ -13,13 +13,14 @@ public class BloomFilter {
     private MessageDigest[] hashFunctions;
     private BitSet bits;
     private int numBits;
+    private int itemAdded;
 
     public BloomFilter(int numBits, String... hashFunctionNames) {
         this.numHashFunctions = hashFunctionNames.length;
         this.hashFunctions = new MessageDigest[numHashFunctions];
         this.numBits=numBits;
         this.bits = new BitSet(this.numBits);
-
+        this.itemAdded =0;
         // Initialize the hash functions
         for (int i = 0; i < numHashFunctions; i++) {
             try {
@@ -36,7 +37,7 @@ public class BloomFilter {
             hashFunctions[i].update(word.getBytes());
             byte[] hash = hashFunctions[i].digest();
             BigInteger hashInt = new BigInteger(hash);
-
+            this.itemAdded++;
             int val = hashInt.intValue();
             if (val>0)
                 bits.set(val % this.numBits);
@@ -74,5 +75,8 @@ public class BloomFilter {
         return sb.toString();
     }
 
+    public int getSize() {
+        return this.itemAdded;
+    }
 
 }

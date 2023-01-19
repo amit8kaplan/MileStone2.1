@@ -1,3 +1,6 @@
+
+
+
 package test;
 
 
@@ -73,6 +76,9 @@ public class Dictionary {
         } catch (IOException e) {
             return false;
         }
+    }
+    public int getSize() {
+        return bloomFilter.getSize();
     }
 
 }
